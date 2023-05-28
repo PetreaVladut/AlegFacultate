@@ -1,0 +1,13 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">AlegFacultate</string>
+
+    <string name="bold" tools:ignore="ReferenceType">@font/robotobold</string>
+    <string name="light" tools:ignore="ReferenceType">@font/robotolight</string>
+    <string name="regular" tools:ignore="ReferenceType">@font/robotoregular</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="start">Start</string>
+    <string name="close">Close</string>
+
+    <string name="about_clg">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut turpis mauris, tincidunt nec consequat nec, finibus vitae metus. Mauris rutrum diam justo. Proin ultrices accumsan lectus sed vulputate. Morbi ornare, ipsum placerat porttitor cursus, mi erat accumsan enim, at pharetra odio libero nec ipsum. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Ut dictum convallis nisi in efficitur. Nullam non erat lectus. Aliquam non ultrices ex. Fusce id placerat risus, congue venenatis risus. Etiam placerat libero vitae imperdiet consectetur.</string>
+</resources>

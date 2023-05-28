@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/navigation_results"
+        android:icon="@drawable/share"
+        android:title="Profile" />
+    <item
+        android:id="@+id/navigation_share"
+        android:icon="@drawable/notepad"
+        android:title="Results" />
+
+    <item android:id="@+id/navigation_prevPaper"
+        android:title="Previous Year Exams"
+        android:icon="@drawable/ebook"/>
+
+    <item android:id="@+id/navigation_website"
+        android:title="National Statistics"
+        android:icon="@drawable/website"/>
+
+    <item android:id="@+id/navigation_developer"
+        android:title="Developer"
+        android:icon="@drawable/developer"/>
+</menu>
