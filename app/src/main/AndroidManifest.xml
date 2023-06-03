@@ -9,15 +9,22 @@
         android:roundIcon="@drawable/pu_logo2"
         android:supportsRtl="true"
         android:theme="@style/Theme.PUSSGRC">
-        <activity android:name=".Developer"
-            android:parentActivityName=".MainActivity"/>
-        <activity android:name=".Website"
-            android:parentActivityName=".MainActivity"/>
-        <activity android:name=".ELibrary"
-            android:parentActivityName=".MainActivity"/>
-        <activity android:name=".Results"
-            android:parentActivityName=".MainActivity"/>
-        <activity android:name=".FullImageView"/>
+        <activity
+            android:name=".MainActivity2"
+            android:exported="false" />
+        <activity
+            android:name=".Developer"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".Website"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".ELibrary"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".Results"
+            android:parentActivityName=".MainActivity" />
+        <activity android:name=".FullImageView" />
         <activity
             android:name=".ebook.EbookActivity"
             android:parentActivityName=".MainActivity" />

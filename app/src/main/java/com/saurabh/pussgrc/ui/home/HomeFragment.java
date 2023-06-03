@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.saurabh.pussgrc.R;
+import com.saurabh.pussgrc.University;
 
 public class HomeFragment extends Fragment {
 
@@ -23,6 +24,12 @@ public class HomeFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
+        Bundle args = getArguments();
+        if (args != null) {
+
+            University un= (University) args.getSerializable("key");
+            // Use the retrieved values as needed
+        }
 
         map = view.findViewById(R.id.map);
         map.setOnClickListener(new View.OnClickListener() {
@@ -36,7 +43,7 @@ public class HomeFragment extends Fragment {
     }
 
     private void openMap() {
-        Uri uri = Uri.parse("geo:0,0?q=Panjab University Swami Sarvanand Giri Regional Centre");
+        Uri uri = Uri.parse("geo:0,0?q=Panjab com.saurabh.pussgrc.University Swami Sarvanand Giri Regional Centre");
         Intent intent = new Intent(Intent.ACTION_VIEW,uri);
         intent.setPackage("com.google.android.apps.maps");
         startActivity(intent);

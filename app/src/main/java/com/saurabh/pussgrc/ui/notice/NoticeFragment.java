@@ -1,9 +1,13 @@
 package com.saurabh.pussgrc.ui.notice;
 
+import android.content.ContentResolver;
+import android.content.res.Resources;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -18,7 +22,9 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.saurabh.pussgrc.MainActivity;
 import com.saurabh.pussgrc.R;
+import com.saurabh.pussgrc.University;
 import com.saurabh.pussgrc.ui.faculty.TeacherAdapter;
 import com.saurabh.pussgrc.ui.faculty.TeacherData;
 
@@ -28,10 +34,11 @@ public class NoticeFragment extends Fragment {
 
     private RecyclerView deleteNoticeRecycler;
     private ProgressBar progressBar;
-    private ArrayList<NoticeData> list;
+    private ArrayList<University> list;
     private NoticeAdapter adapter;
 
     private DatabaseReference reference;
+    FragmentManager manager;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -76,15 +83,21 @@ public class NoticeFragment extends Fragment {
             }
         });*/
         list = new ArrayList<>();
-        list.add(0,new NoticeData("Universitatea de Vest Timisoara", null, null, "Timisoara,Romania",  null));
-        list.add(0,new NoticeData("Universitatea Politehnica din Timisoara", null, null, "Timisoara,Romania",  null));
-        list.add(0,new NoticeData("Universitatea Politehnica din Bucuresti", null, null, "Bucuresti,Romania",  null));
-        list.add(0,new NoticeData("Universitatea din Bucuresti", null, null, "Bucuresti,Romania",  null));
-        list.add(0,new NoticeData("Universitatea Transilvania din Brasov", null, null, "Brasov,Romania",  null));
-        adapter =  new NoticeAdapter(getContext(), list);
-        adapter.notifyDataSetChanged();
+        String[] array = new String[] { "Computer Science", "Math", "Software Engineering" };
+        String s=getString(R.string.about_clg);
+        Resources resources = getResources();
+        int imageResId = R.drawable.pu_img; // Replace with the actual resource ID of your image
+
+        Uri imageUri = Uri.parse(ContentResolver.SCHEME_ANDROID_RESOURCE +
+                "://" + resources.getResourcePackageName(imageResId)
+                + '/' + resources.getResourceTypeName(imageResId)
+                + '/' + resources.getResourceEntryName(imageResId));
+        list.add(0,new University("Universitatea de Vest Timisoara", "Blv. Vasile Parvan, Timisoara, Romania", array, s,  "Prof. UNiv. Ceva","secretariat.uvt@e-uvt.ro",5,imageUri));
+        adapter =  new NoticeAdapter(getContext(), list,this);
+        //adapter.notifyDataSetChanged();
         progressBar.setVisibility(View.GONE);
         deleteNoticeRecycler.setAdapter(adapter);
+        deleteNoticeRecycler.setLayoutManager(new LinearLayoutManager(getContext()));
     }
 
 }

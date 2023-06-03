@@ -6,12 +6,12 @@
     app:startDestination="@+id/navigation_home">
 
     <fragment android:id="@+id/navigation_home"
-        android:name="com.saurabh.pussgrc.ui.home.HomeFragment"
+        android:name="com.saurabh.pussgrc.ui.notice.NoticeFragment"
         android:label="Home"
         tools:layout="@layout/fragment_home"/>
 
     <fragment android:id="@+id/navigation_notice"
-        android:name="com.saurabh.pussgrc.ui.notice.NoticeFragment"
+        android:name="com.saurabh.pussgrc.ui.home.HomeFragment"
         android:label="Notice"
         tools:layout="@layout/fragment_notice"/>
 
@@ -26,8 +26,9 @@
         tools:layout="@layout/fragment_gallery"/>
 
     <fragment android:id="@+id/navigation_about"
-        android:name="com.saurabh.pussgrc.ui.about.AboutFragment"
+        android:name="com.saurabh.pussgrc.intermediar"
         android:label="About"
         tools:layout="@layout/fragment_about"/>
+
 
 </navigation>

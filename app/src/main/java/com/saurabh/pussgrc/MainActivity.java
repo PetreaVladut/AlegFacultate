@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -11,6 +13,9 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
@@ -18,6 +23,9 @@ import androidx.navigation.ui.NavigationUI;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.saurabh.pussgrc.ebook.EbookActivity;
+import com.saurabh.pussgrc.ui.faculty.FacultyFragment;
+import com.saurabh.pussgrc.ui.home.HomeFragment;
+import com.saurabh.pussgrc.ui.notice.NoticeFragment;
 
 import java.util.Objects;
 
@@ -29,6 +37,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle toggle;
     private NavigationView navigationView;
+    Button buton;
 
 
     @Override
@@ -51,6 +60,25 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         navigationView.setNavigationItemSelectedListener(this);
 
         NavigationUI.setupWithNavController(bottomNavigationView, navController);
+        buton=findViewById(R.id.roundButton);
+        buton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                    Fragment fragment;
+                    FragmentManager fragmentManager = getSupportFragmentManager();
+                    Fragment currentFragment = fragmentManager.findFragmentById(R.id.container);
+
+                    if (currentFragment instanceof FacultyFragment) {
+                        fragment = new NoticeFragment();
+                    } else {
+                        fragment = new FacultyFragment();
+                    }
+
+                    fragmentManager.beginTransaction()
+                            .replace(R.id.container, fragment)
+                            .commit();
+            }
+        });
     }
 
     @Override
@@ -69,10 +97,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 startActivity(new Intent(this, Developer.class));
                 break;
             case R.id.navigation_share:
-                String url = "https://drive.google.com/drive/folders/1S5eB9DCEi-F-e8kceHGIXoj7QXYSEUMg";
-
-                Intent i = new Intent(Intent.ACTION_VIEW);
-                i.setData(Uri.parse(url));
+                Intent i = new Intent(this,MainActivity2.class);
                 startActivity(i);
                 break;
             case R.id.navigation_prevPaper:
@@ -80,9 +105,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
             case R.id.navigation_results:
                 startActivity(new Intent(this, Results.class));
-                break;
-            case R.id.navigation_website:
-                startActivity(new Intent(this, Website.class));
                 break;
         }
         return true;
